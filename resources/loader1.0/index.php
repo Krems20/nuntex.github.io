@@ -1,9 +1,7 @@
 <?php
-$files = array_diff(scandir('files'), array('..', '.'));
-
-if (isset($_GET['file'])) {
-    $file = basename($_GET['file']);
-    $filepath = '/resources/loader1.0/' . $file;
+if (isset($_GET['download'])) {
+    $file = 'Loader-1.0.zip';
+    $filepath = $file;
 
     if (file_exists($filepath)) {
         header('Content-Description: File Transfer');
@@ -26,14 +24,13 @@ if (isset($_GET['file'])) {
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Скачивание файлов</title>
+    <title>Скачивание Loader-1.0.zip</title>
 </head>
 <body>
-    <h1>Список файлов для скачивания</h1>
-    <ul>
-        <?php foreach ($files as $file): ?>
-            <li><a href="?file=<?php echo urlencode($file); ?>"><?php echo htmlspecialchars($file); ?></a></li>
-        <?php endforeach; ?>
-    </ul>
+    <h1>Скачивание Loader-1.0.zip</h1>
+    <p>Нажмите на кнопку ниже, чтобы скачать файл:</p>
+    <form method="get" action="">
+        <button type="submit" name="download">Скачать Loader-1.0.zip</button>
+    </form>
 </body>
 </html>
