@@ -1,22 +1,25 @@
 <?php
-// Убедитесь, что файл существует
-$file_path = '/resources/loader1.0/Loader-1.0.zip';
+// Проверка, была ли нажата кнопка
+if (isset($_POST['download'])) {
+    $file_path = '/resources/loader1.0/Loader-1.0.zip';
 
-if (file_exists($file_path)) {
-    // Установка заголовков для скачивания
-    header('Content-Description: File Transfer');
-    header('Content-Type: application/zip');
-    header('Content-Disposition: attachment; filename="' . basename($file_path) . '"');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($file_path));
-
-    // Чтение файла и его вывод
-    readfile($file_path);
-    exit;
-} else {
-    echo "Файл не найден.";
+    // Убедитесь, что файл существует
+    if (file_exists($file_path)) {
+        // Установка заголовков для скачивания
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/zip');
+        header('Content-Disposition: attachment; filename="' . basename($file_path) . '"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file_path));
+        
+        // Чтение файла и его вывод
+        readfile($file_path);
+        exit;
+    } else {
+        echo "Файл не найден.";
+    }
 }
 ?>
 
