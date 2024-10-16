@@ -1,13 +1,11 @@
 <?php
+// Проверка, был ли запрос на скачивание
 if (isset($_GET['download'])) {
-    $file = 'Loader-1.0.zip';
-    $filepath = __DIR__ . '/' . $file;
+    $file = 'Loader-1.0.zip'; // Имя файла
+    $filepath = __DIR__ . '/' . $file; // Полный путь к файлу
 
+    // Проверка существования файла
     if (file_exists($filepath)) {
-        // Очищаем буфер вывода
-        ob_clean();
-        flush();
-
         // Устанавливаем заголовки для скачивания
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
@@ -16,10 +14,8 @@ if (isset($_GET['download'])) {
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
         header('Content-Length: ' . filesize($filepath));
-
-        // Читаем файл
-        readfile($filepath);
-        exit;
+        readfile($filepath); // Чтение файла
+        exit; // Завершение скрипта
     } else {
         echo "Файл не найден.";
         exit;
