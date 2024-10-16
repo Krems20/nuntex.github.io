@@ -1,28 +1,18 @@
 <?php
-// Папка, где хранятся файлы
-$directory = 'files/'; 
-$file = basename($_GET['file']); // Получаем имя файла
-$filepath = $directory . $file;
+$file = $_GET['file'];
+$filePath = 'files/' . basename($file);
 
-// Проверяем, существует ли файл
-if (file_exists($filepath)) {
-    // Устанавливаем заголовки для скачивания
+if (file_exists($filePath)) {
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="' . $file . '"');
+    header('Content-Disposition: attachment; filename="' . basename($file) . '"');
     header('Expires: 0');
     header('Cache-Control: must-revalidate');
     header('Pragma: public');
-    header('Content-Length: ' . filesize($filepath));
-
-    // Очищаем буфер вывода
-    ob_clean();
-    flush();
-
-    // Читаем файл и отправляем его пользователю
-    readfile($filepath);
+    header('Content-Length: ' . filesize($filePath));
+    readfile($filePath);
     exit;
 } else {
-    echo "Файл не найден.";
+    echo 'Файл не найден.';
 }
 ?>
