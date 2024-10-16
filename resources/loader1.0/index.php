@@ -1,9 +1,13 @@
 <?php
 if (isset($_GET['download'])) {
     $file = 'Loader-1.0.zip';
-    $filepath = __DIR__ . '/' . $file; // Используем __DIR__ для получения абсолютного пути
+    $filepath = __DIR__ . '/' . $file;
 
     if (file_exists($filepath)) {
+        // Очищаем буфер вывода
+        ob_clean();
+        flush();
+
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
         header('Content-Disposition: attachment; filename="' . basename($file) . '"');
