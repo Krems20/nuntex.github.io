@@ -1,12 +1,12 @@
 <?php
 if (isset($_GET['download'])) {
     $file = 'Loader-1.0.zip';
-    $filepath = $file;
+    $filepath = __DIR__ . '/' . $file; // Используем __DIR__ для получения абсолютного пути
 
     if (file_exists($filepath)) {
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="' . $file . '"');
+        header('Content-Disposition: attachment; filename="' . basename($file) . '"');
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
