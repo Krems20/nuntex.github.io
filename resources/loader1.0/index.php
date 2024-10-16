@@ -8,6 +8,7 @@ if (isset($_GET['download'])) {
         ob_clean();
         flush();
 
+        // Устанавливаем заголовки для скачивания
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
         header('Content-Disposition: attachment; filename="' . basename($file) . '"');
@@ -15,6 +16,8 @@ if (isset($_GET['download'])) {
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
         header('Content-Length: ' . filesize($filepath));
+
+        // Читаем файл
         readfile($filepath);
         exit;
     } else {
