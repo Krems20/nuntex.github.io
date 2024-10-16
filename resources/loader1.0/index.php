@@ -1,25 +1,22 @@
 <?php
-// Проверка, был ли запрос на скачивание
-if (isset($_GET['download'])) {
-    $file = 'Loader-1.0.zip'; // Имя файла
-    $filepath = __DIR__ . '/' . $file; // Полный путь к файлу
+// Убедитесь, что файл существует
+$file_path = '/resources/loader1.0/Loader-1.0.zip';
 
-    // Проверка существования файла
-    if (file_exists($filepath)) {
-        // Устанавливаем заголовки для скачивания
-        header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="' . basename($file) . '"');
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: ' . filesize($filepath));
-        readfile($filepath); // Чтение файла
-        exit; // Завершение скрипта
-    } else {
-        echo "Файл не найден.";
-        exit;
-    }
+if (file_exists($file_path)) {
+    // Установка заголовков для скачивания
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/zip');
+    header('Content-Disposition: attachment; filename="' . basename($file_path) . '"');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate');
+    header('Pragma: public');
+    header('Content-Length: ' . filesize($file_path));
+
+    // Чтение файла и его вывод
+    readfile($file_path);
+    exit;
+} else {
+    echo "Файл не найден.";
 }
 ?>
 
@@ -27,13 +24,13 @@ if (isset($_GET['download'])) {
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Скачивание Loader-1.0.zip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скачать файл</title>
 </head>
 <body>
-    <h1>Скачивание Loader-1.0.zip</h1>
-    <p>Нажмите на кнопку ниже, чтобы скачать файл:</p>
-    <form method="get" action="">
-        <button type="submit" name="download">Скачать Loader-1.0.zip</button>
+    <h1>Скачать файл Loader-1.0.zip</h1>
+    <form method="post" action="">
+        <button type="submit" name="download">Скачать</button>
     </form>
 </body>
 </html>
