@@ -1,6 +1,6 @@
 <?php
-// Убедитесь, что файл существует в папке 'files'
-$directory = 'files/'; // Папка, где хранятся файлы
+// Папка, где хранятся файлы
+$directory = 'files/'; 
 $file = basename($_GET['file']); // Получаем имя файла
 $filepath = $directory . $file;
 
@@ -14,7 +14,11 @@ if (file_exists($filepath)) {
     header('Cache-Control: must-revalidate');
     header('Pragma: public');
     header('Content-Length: ' . filesize($filepath));
-    
+
+    // Очищаем буфер вывода
+    ob_clean();
+    flush();
+
     // Читаем файл и отправляем его пользователю
     readfile($filepath);
     exit;
