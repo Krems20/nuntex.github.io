@@ -1,0 +1,52 @@
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background: linear-gradient(to bottom right, rgb(35, 35, 35), rgb(61, 61, 61), rgb(35, 35, 35));
+        }
+
+        nav {
+            width: 200px;
+            padding: 20px;
+            background: linear-gradient(to right, rgb(29, 29, 29), rgb(56, 56, 56));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .theme {
+            background-color: #bcbcbc;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        nav button:hover {
+            background-color: #555;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .clickable-block {
+            background-color: #1c1c1c;
+            color: white;
+            padding: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .clickable-block:hover {
+            background-color: #333;
+        }
