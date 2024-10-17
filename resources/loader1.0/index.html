@@ -1,1 +1,30 @@
-enter
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример сайта</title>
+    <link rel="stylesheet" href="css/main.css" class="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <button onclick="window.open('https://site1.com')" class="theme">Сайт 1</button>
+        <button onclick="window.open('https://site2.com')" class="theme">Сайт 2</button>
+        <button onclick="window.open('https://site3.com')" class="theme">Сайт 3</button>
+    </nav>
+    <div class="content">
+        <div class="clickable-block" onclick="window.open('https://example1.com', '_blank')">
+            Длинный текст для блока 1. Кликайте сюда, чтобы перейти на другой сайт.
+        </div>
+        <div class="clickable-block" onclick="window.open('https://example2.com', '_blank')">
+            Длинный текст для блока 2. Кликайте сюда, чтобы перейти на другой сайт.
+        </div>
+        <div class="clickable-block" onclick="window.open('https://example3.com', '_blank')">
+            Длинный текст для блока 3. Кликайте сюда, чтобы перейти на другой сайт.
+        </div>
+    </div>
+</body>
+
+</html>
